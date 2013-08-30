@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Herve
+ * @package     Herve_TopLinks
+ * @copyright   Copyright (c) 2013 Hervé Guétin (http://www.herveguetin.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+-->
+<layout version="0.1.0">
+
+    <default>
+
+        <!--
+            Basic example: add a top link to external URL by passing all arguments in this layout
+        -->
+        <reference name="top.links">
+            <action method="addLink" translate="label title">
+                <label>Go to google.com</label>
+                <url>http://www.google.com</url>
+                <title>Visit google.com</title>
+                <prepare/>
+                <urlParams/>
+                <position>200</position>
+                <liParams/>
+                <aParams/>
+                <beforeText/>
+                <afterText/>
+            </action>
+        </reference>
+
+
+
+        <!--
+            Full example: add a top link to CMS page by passing all arguments in this layout
+        -->
+        <reference name="top.links">
+            <action method="addLink" translate="label title">
+                <label>Who we are</label>
+
+                <!-- URL identifier of a CMS page -->
+                <url>about-magento-demo-store</url>
+
+                <title>About our Store</title>
+
+                <!-- Ask Magento to convert <url> identifier of the CMS page to a link relative to our domain -->
+                <prepare>1</prepare>
+
+                <urlParams/>
+                <position>200</position>
+
+                <!-- Adding a class param to the <li> of the link. Any param passed in liParams node will be added to the rendered <li> -->
+                <liParams>
+                    <class>top-links-about-us</class>
+                </liParams>
+
+                <!-- Adding inline style to the <a> tag of the link. Any param passed in aParams node will be added to the rendered <a> -->
+                <aParams>
+                    <style>font-weight: bold; color: red;</style>
+                    <target>blank</target><!-- Though this is not recommended, this is for the sake of the example -->
+                </aParams>
+
+                <!-- Some text added before the <a> -->
+                <beforeText>
+                    <![CDATA[<span style="color: red">&gt;</span>]]>
+                </beforeText>
+
+                <!-- Some text after before the <a> -->
+                <afterText>
+                    <![CDATA[<span style="color: red">&lt;</span>]]>
+                </afterText>
+            </action>
+        </reference>
+
+
+
+        <!--
+            Add the product with ID 1 to the cart
+        -->
+        <reference name="top.links">
+            <action method="addLink" translate="label title">
+                <label>Buy our best selling product now!</label>
+                <url>checkout/cart/add</url>
+                <title>Buy our best selling product now!</title>
+                <prepare>1</prepare>
+
+                <!-- Add params to the URL like <param>value</param> -->
+                <urlParams>
+                    <product>1</product>
+                    <qty>2</qty>
+                </urlParams>
+
+                <position>200</position>
+                <liParams/>
+                <aParams/>
+                <beforeText/>
+                <afterText/>
+            </action>
+        </reference>
+
+
+
+        <!--
+            Add newest product to the cart
+        -->
+        <reference name="top.links">
+            <block type="toplinks/newest" name="toplinks_buy_newest_link">
+                <action method="addBuyNewestLink"></action>
+            </block>
+        </reference>
+
+
+
+        <!--
+            Add the content from a template file
+        -->
+        <reference name="top.links">
+
+            <!-- Add a template which name is "toplinks_notice" -->
+            <block type="core/template" name="toplinks_notice" template="toplinks/notice.phtml">
+                <action method="setPosition"><position>1</position></action>
+            </block>
+
+            <action method="addLinkBlock">
+                <!-- Note that the <blockName> is the name of the template added just above -->
+                <blockName>toplinks_notice</blockName>
+            </action>
+        </reference>
+
+    </default>
+
+</layout>

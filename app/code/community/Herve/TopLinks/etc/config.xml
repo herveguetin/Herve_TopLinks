@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Herve
+ * @package     Herve_TopLinks
+ * @copyright   Copyright (c) 2013 Hervé Guétin (http://www.herveguetin.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Herve_TopLinks>
+            <version>1.0.0.0</version>
+        </Herve_TopLinks>
+    </modules>
+    <global>
+        <blocks>
+            <toplinks>
+                <class>Herve_TopLinks_Block</class>
+            </toplinks>
+        </blocks>
+        <helpers>
+            <toplinks>
+                <class>Herve_TopLinks_Helper</class>
+            </toplinks>
+        </helpers>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <toplinks>
+                    <file>toplinks.xml</file>
+                </toplinks>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Herve_TopLinks>
+                    <files>
+                        <default>Herve_TopLinks.csv</default>
+                    </files>
+                </Herve_TopLinks>
+            </modules>
+        </translate>
+    </frontend>
+</config>
