@@ -7,6 +7,11 @@
  */
 class Herve_TopLinks_Block_Newest extends Mage_Core_Block_Template {
 
+    /**
+     * Add a link with the newest product added to the catalog
+     *
+     * @return Herve_TopLinks_Block_Newest
+     */
     public function addBuyNewestLink()
     {
         $parentBlock = $this->getParentBlock();
